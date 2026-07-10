@@ -96,13 +96,15 @@ h1 .title-mobile{display:none}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 .reveal-stagger > *{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
-.reveal-stagger.in > *{opacity:1;transform:none}
-.reveal-stagger.in > *:nth-child(1){transition-delay:.05s}
-.reveal-stagger.in > *:nth-child(2){transition-delay:.15s}
-.reveal-stagger.in > *:nth-child(3){transition-delay:.25s}
-.reveal-stagger.in > *:nth-child(4){transition-delay:.35s}
-.reveal-stagger.in > *:nth-child(5){transition-delay:.45s}
-.reveal-stagger.in > *:nth-child(6){transition-delay:.55s}
+.reveal-stagger > .card,.reveal-stagger > .btn{transition:opacity .55s ease,transform .55s ease,border-color .2s,color .2s,background .2s}
+.reveal-stagger > *.in{opacity:1;transform:none}
+.reveal-stagger > *:nth-child(1).in{transition-delay:.04s}
+.reveal-stagger > *:nth-child(2).in{transition-delay:.1s}
+.reveal-stagger > *:nth-child(3).in{transition-delay:.16s}
+.reveal-stagger > *:nth-child(4).in{transition-delay:.22s}
+.reveal-stagger > *:nth-child(5).in{transition-delay:.28s}
+.reveal-stagger > *:nth-child(6).in{transition-delay:.34s}
+.reveal-stagger > *:nth-child(7).in{transition-delay:.4s}
 @media(prefers-reduced-motion:reduce){.log-line{animation:none;opacity:1;transform:none}.btn:hover{transform:none}.reveal,.reveal-stagger > *{opacity:1;transform:none;transition:none}}
 
 /* ---------- sections ---------- */
@@ -439,7 +441,7 @@ footer{padding:26px 0 40px}
     <div class="wrap">
       <p class="big reveal">Have something to ship?<br><em>Let's build it fast and build it right.</em></p>
       <p>Open to Python, backend, full-stack, and automation roles or freelance projects in e-commerce platforms, custom web apps, REST APIs, and business automation. Available onsite or remote.</p>
-      <div class="contact-row reveal">
+      <div class="contact-row reveal-stagger">
         <a class="btn btn-solid" href="mailto:contact@saifullahtech.com">Email me</a>
         <a class="btn btn-ghost" href="tel:+923077675982">+92 307 7675982</a>
         <a class="btn btn-ghost" href="https://github.com/saifullahtech" target="_blank" rel="noopener">GitHub</a>
@@ -485,7 +487,7 @@ window.addEventListener('resize',()=>{
 
 // Scroll reveal
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+const revealEls = document.querySelectorAll('.reveal, .reveal-stagger > *');
 if(reduceMotion || !('IntersectionObserver' in window)){
   revealEls.forEach(el=>el.classList.add('in'));
 }else{
@@ -502,6 +504,3 @@ if(reduceMotion || !('IntersectionObserver' in window)){
 </script>
 </body>
 </html>
-=======
-
->>>>>>> 118cf68c4b0c345807e89cbf7b9376695a439448
