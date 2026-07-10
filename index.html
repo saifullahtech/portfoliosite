@@ -61,6 +61,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.85);backdrop-f
 .photo-tag::before{content:"●";color:var(--live);margin-right:6px;font-size:8px;vertical-align:1px}
 .eyebrow{font-family:var(--mono);font-size:12.5px;color:var(--amber);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:22px}
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--amber)}
+.eyebrow-mobile{display:none}
 h1{font-family:var(--mono);font-weight:600;font-size:clamp(30px,5.4vw,54px);line-height:1.12;letter-spacing:-.01em;margin-bottom:20px}
 h1 em{font-style:normal;color:var(--amber)}
 h1 .title-mobile{display:none}
@@ -169,20 +170,24 @@ footer{padding:26px 0 40px}
 @media(max-width:700px){
   .wrap{padding:0 18px}
   header{background:rgba(11,18,32,.96)}
-  .nav{position:relative;gap:12px;min-height:78px;padding:12px 0}
-  .brand{display:inline-flex;align-items:center;padding:8px 10px;font-size:22px;line-height:1;letter-spacing:.01em}
-  .menu-toggle{display:flex;width:48px;height:44px;border:0;border-radius:0;gap:7px}
-  .menu-toggle span{width:32px;height:4px;background:var(--text)}
+  .nav{position:relative;gap:12px;min-height:64px;padding:10px 0}
+  .brand{display:inline-flex;align-items:center;padding:0;font-size:20px;line-height:1.1;letter-spacing:.01em}
+  .menu-toggle{display:flex;width:42px;height:40px;border:0;border-radius:0;gap:6px}
+  .menu-toggle span{width:30px;height:3px;background:var(--text)}
   .nav-links{position:absolute;top:calc(100% + 10px);right:0;width:min(230px,calc(100vw - 36px));display:grid;grid-template-columns:1fr;gap:0;padding:8px;background:rgba(16,26,45,.98);border:1px solid var(--line);border-radius:8px;box-shadow:0 16px 38px rgba(0,0,0,.28);opacity:0;visibility:hidden;transform:translateY(-6px);pointer-events:none;transition:opacity .2s,transform .2s,visibility .2s}
   .nav.is-open .nav-links{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
   .nav-links a{display:block;padding:10px 12px;border-radius:5px;font-size:11.5px}
   .nav-links a:hover{background:var(--amber-soft)}
-  .nav.is-open .menu-toggle span:first-child{transform:translateY(11px) rotate(45deg)}
-  .nav.is-open .menu-toggle span:last-child{transform:translateY(-11px) rotate(-45deg)}
-  .hero{padding:24px 0 60px}
+  .nav.is-open .menu-toggle span:first-child{transform:translateY(9px) rotate(45deg)}
+  .nav.is-open .menu-toggle span:last-child{transform:translateY(-9px) rotate(-45deg)}
+  .hero{padding:22px 0 60px;background:linear-gradient(180deg,rgba(16,26,45,.5),rgba(11,18,32,0) 42%)}
   .hero-grid{gap:34px}
-  .eyebrow{max-width:100%;font-size:12px;line-height:1.65;letter-spacing:.11em;align-items:flex-start;margin:4px 0 14px}
+  .eyebrow{max-width:100%;display:block;margin:2px 0 18px;color:var(--dim);letter-spacing:0;text-transform:none}
   .eyebrow::before{display:none}
+  .eyebrow-full{display:none}
+  .eyebrow-mobile{display:flex;flex-wrap:wrap;gap:7px}
+  .eyebrow-mobile span{display:inline-flex;align-items:center;min-height:28px;padding:6px 9px;border:1px solid rgba(139,153,181,.24);border-radius:6px;background:rgba(16,26,45,.72);color:#C8D2E4;font-size:10.5px;line-height:1;letter-spacing:.04em;text-transform:uppercase}
+  .eyebrow-mobile span:first-child{border-color:rgba(242,169,59,.45);background:rgba(242,169,59,.09);color:var(--amber)}
   h1{font-size:clamp(34px,8.8vw,46px);line-height:1.13;margin-bottom:24px}
   h1 .title-full{display:none}
   h1 .title-mobile{display:inline}
@@ -205,12 +210,14 @@ footer{padding:26px 0 40px}
 @media(max-width:520px){
   body{font-size:15px}
   .wrap{padding:0 16px}
-  .brand{font-size:20px;padding:8px 9px}
+  .brand{font-size:19px;padding:0}
   .nav-links{width:min(220px,calc(100vw - 32px))}
   .hero{padding:20px 0 58px}
   .hero-grid{gap:32px}
   .photo-card{max-width:min(340px,84vw);margin-top:-10px}
-  .eyebrow{font-size:11px;line-height:1.6;letter-spacing:.1em;margin:2px 0 12px}
+  .eyebrow{margin:0 0 16px}
+  .eyebrow-mobile{gap:6px}
+  .eyebrow-mobile span{min-height:27px;padding:6px 8px;font-size:10px}
   h1{font-size:clamp(29px,8.2vw,34px)}
   .hero p.lede{font-size:14.5px;line-height:1.62;margin-bottom:12px}
   .contact-row{flex-direction:column;align-items:stretch}
@@ -245,7 +252,7 @@ footer{padding:26px 0 40px}
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">Python Developer · Full Stack Web Developer · Next.js · DRF · FastAPI</div>
+          <div class="eyebrow"><span class="eyebrow-full">Python Developer · Full Stack Web Developer · Next.js · DRF · FastAPI</span><span class="eyebrow-mobile"><span>Python</span><span>Full Stack</span><span>Next.js</span><span>DRF</span><span>FastAPI</span></span></div>
           <h1><span class="title-full">I build production ready systems<br><em>from architecture to deployment.</em></span><span class="title-mobile">I build production<br>ready systems<br><em>from architecture</em><br><em>to deployment.</em></span></h1>
           <p class="lede"><span class="lede-full">I'm Saifullah, a Python-focused full-stack developer working with <strong>Django, DRF, FastAPI, Next.js, and automation scripting</strong>. I've solely designed, built, and deployed <strong>3 production platforms</strong>, including an e-commerce store serving <strong>22,000+ customers</strong>, plus Suthra Punjab automation systems used in daily operations.</span><span class="lede-mobile">I'm Saifullah, a Python-focused full-stack developer building <strong>Django, DRF, FastAPI, Next.js, and automation systems</strong>. <strong>3 production platforms</strong> shipped, <strong>22,000+ customers</strong> served.</span></p>
           <div class="hero-cta">
