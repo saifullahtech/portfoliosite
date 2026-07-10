@@ -259,7 +259,7 @@ footer{padding:26px 0 40px}
           <p class="lede"><span class="lede-full">I'm Saifullah, a Python-focused full-stack developer working with <strong>Django, DRF, FastAPI, Next.js, and automation scripting</strong>. I've solely designed, built, and deployed <strong>3 production platforms</strong>, including an e-commerce store serving <strong>22,000+ customers</strong>, plus Suthra Punjab automation systems used in daily operations.</span><span class="lede-mobile">I'm Saifullah, a Python-focused full-stack developer building <strong>Django, DRF, FastAPI, Next.js, and automation systems</strong>. <strong>3 production platforms</strong> shipped, <strong>22,000+ customers</strong> served.</span></p>
           <div class="hero-cta">
             <a class="btn btn-solid" href="#work"><span class="label-full">See live work</span><span class="label-mobile">See work</span></a>
-            <a class="btn btn-ghost" href="mailto:contact@saifullahtech.com"><span class="label-full">contact@saifullahtech.com</span><span class="label-mobile">Email me</span></a>
+            <a class="btn btn-ghost email-link" href="mailto:contact@saifullahtech.com" data-webmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=contact%40saifullahtech.com"><span class="label-full">contact@saifullahtech.com</span><span class="label-mobile">Email me</span></a>
           </div>
         </div>
         <div class="photo-card">
@@ -442,7 +442,7 @@ footer{padding:26px 0 40px}
       <p class="big reveal">Have something to ship?<br><em>Let's build it fast and build it right.</em></p>
       <p>Open to Python, backend, full-stack, and automation roles or freelance projects in e-commerce platforms, custom web apps, REST APIs, and business automation. Available onsite or remote.</p>
       <div class="contact-row reveal-stagger">
-        <a class="btn btn-solid" href="mailto:contact@saifullahtech.com">Email me</a>
+        <a class="btn btn-solid email-link" href="mailto:contact@saifullahtech.com" data-webmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=contact%40saifullahtech.com">Email me</a>
         <a class="btn btn-ghost" href="tel:+923077675982">+92 307 7675982</a>
         <a class="btn btn-ghost" href="https://github.com/saifullahtech" target="_blank" rel="noopener">GitHub</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/saifullahtech/" target="_blank" rel="noopener">LinkedIn</a>
@@ -476,6 +476,16 @@ menuToggle.addEventListener('click',()=>{
 });
 
 navLinks.forEach(link=>link.addEventListener('click',closeMenu));
+
+document.querySelectorAll('.email-link').forEach(link=>{
+  link.addEventListener('click',event=>{
+    if(!window.matchMedia('(min-width: 701px)').matches) return;
+    const webmail = link.dataset.webmail;
+    if(!webmail) return;
+    event.preventDefault();
+    window.open(webmail,'_blank','noopener');
+  });
+});
 
 document.addEventListener('keydown',event=>{
   if(event.key === 'Escape') closeMenu();
